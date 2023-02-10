@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,18 +14,20 @@ namespace Text_Editor
 {
     public partial class frmMainMenu : Form
     {
+        private string searchText = frmSearchMenu.SearchText;
         public frmMainMenu()
         {
             InitializeComponent();
+            DisableMenuItems();
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (rtxtText.Text.Length > 0)
+            if (rtbText.Text.Length > 0)
             {
                 DialogResult confirm = MessageBox.Show("This action will open a new file and permanently clear this one. Are you sure you have saved and want to proceed?", "Opening a new file", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (confirm == DialogResult.Yes)
-                    rtxtText.Clear();
+                    rtbText.Clear();
 
             }
         }
@@ -43,7 +46,7 @@ namespace Text_Editor
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 StreamReader sr = new StreamReader(ofd.FileName);
-                rtxtText.Text = sr.ReadToEnd();
+                rtbText.Text = sr.ReadToEnd();
                 sr.Close();
             }
 
@@ -58,7 +61,7 @@ namespace Text_Editor
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 StreamWriter sw = new StreamWriter(sfd.FileName);
-                sw.Write(rtxtText.Text);
+                sw.Write(rtbText.Text);
                 Close();
             }
         }
@@ -72,7 +75,7 @@ namespace Text_Editor
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 StreamWriter sw = new StreamWriter(sfd.FileName);
-                sw.Write(rtxtText.Text);
+                sw.Write(rtbText.Text);
                 Close();
             }
         }
@@ -84,47 +87,98 @@ namespace Text_Editor
 
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rtxtText.Undo();
+            rtbText.Undo();
         }
 
         private void redoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rtxtText.Redo();
+            rtbText.Redo();
         }
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rtxtText.Cut();
+            rtbText.Cut();
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rtxtText.Copy();
+            rtbText.Copy();
         }
 
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rtxtText.Paste();
+            rtbText.Paste();
         }
 
         private void selectallToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rtxtText.SelectAll();
+            rtbText.SelectAll();
         }
 
         private void colorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ColorDialog colorDialog = new ColorDialog();
             if (colorDialog.ShowDialog() == DialogResult.OK)
-                rtxtText.ForeColor = colorDialog.Color;
+                rtbText.ForeColor = colorDialog.Color;
         }
 
         private void styleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FontDialog fontDialog = new FontDialog();
             if (fontDialog.ShowDialog() == DialogResult.OK)
-                rtxtText.Font = fontDialog.Font;
+                rtbText.SelectionFont = fontDialog.Font;
         }
 
+        private void DisableMenuItems()
+        {
+            if (!rtbText.Modified)
+                undoToolStripMenuItem.Enabled = false;
+            redoToolStripMenuItem.Enabled = false;
+            cutToolStripMenuItem.Enabled = false;
+            copyToolStripMenuItem.Enabled = false;
+            searchToolStripMenuItem.Enabled = false;
+        }
+        private void EnableMenuItems()
+        {
+            undoToolStripMenuItem.Enabled = true;
+            redoToolStripMenuItem.Enabled = true;
+            cutToolStripMenuItem.Enabled = true;
+            copyToolStripMenuItem.Enabled = true;
+            searchToolStripMenuItem.Enabled = true;
+        }
+
+        private void rtxtText_TextChanged(object sender, EventArgs e)
+        {
+            if (rtbText.Text.Length == 0)
+                DisableMenuItems();
+            else
+                EnableMenuItems();
+        }
+        private void searchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSearchMenu searchMenu = new frmSearchMenu();
+            searchMenu.Show();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string[] wordSearch = textBox1.Text.Split(',');
+            foreach (string word in wordSearch)
+            {   
+                //Test.
+            }
+            FindText();
+        }
+
+        private void FindText()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void btnBold_Click(object sender, EventArgs e)
+        {
+            //
+        }
     }
 }

@@ -55,7 +55,13 @@
             this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.styleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rtxtText = new System.Windows.Forms.RichTextBox();
+            this.rtbText = new System.Windows.Forms.RichTextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnBold = new System.Windows.Forms.Button();
+            this.btnItalics = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -282,24 +288,104 @@
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
             this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.searchToolStripMenuItem.Text = "&Search";
+            this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
-            // rtxtText
+            // rtbText
             // 
-            this.rtxtText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.rtbText.AcceptsTab = true;
+            this.rtbText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtxtText.Location = new System.Drawing.Point(0, 27);
-            this.rtxtText.Name = "rtxtText";
-            this.rtxtText.Size = new System.Drawing.Size(1539, 789);
-            this.rtxtText.TabIndex = 1;
-            this.rtxtText.Text = "";
+            this.rtbText.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbText.Location = new System.Drawing.Point(0, 27);
+            this.rtbText.Name = "rtbText";
+            this.rtbText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.rtbText.Size = new System.Drawing.Size(1539, 789);
+            this.rtbText.TabIndex = 1;
+            this.rtbText.Text = "";
+            this.rtbText.WordWrap = false;
+            this.rtbText.TextChanged += new System.EventHandler(this.rtxtText_TextChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(159, 4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(265, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnBold
+            // 
+            this.btnBold.FlatAppearance.BorderSize = 0;
+            this.btnBold.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBold.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBold.Location = new System.Drawing.Point(360, 1);
+            this.btnBold.Name = "btnBold";
+            this.btnBold.Size = new System.Drawing.Size(29, 25);
+            this.btnBold.TabIndex = 4;
+            this.btnBold.Text = "&B";
+            this.btnBold.UseVisualStyleBackColor = true;
+            this.btnBold.Click += new System.EventHandler(this.btnBold_Click);
+            // 
+            // btnItalics
+            // 
+            this.btnItalics.FlatAppearance.BorderSize = 0;
+            this.btnItalics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnItalics.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnItalics.Location = new System.Drawing.Point(387, 1);
+            this.btnItalics.Name = "btnItalics";
+            this.btnItalics.Size = new System.Drawing.Size(19, 23);
+            this.btnItalics.TabIndex = 5;
+            this.btnItalics.Text = "&I";
+            this.btnItalics.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(412, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(25, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "&U";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(443, 2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(23, 23);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "&K";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1539, 816);
-            this.Controls.Add(this.rtxtText);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnItalics);
+            this.Controls.Add(this.btnBold);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.rtbText);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "frmMainMenu";
@@ -338,9 +424,15 @@
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fontToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
-        private System.Windows.Forms.RichTextBox rtxtText;
+        private System.Windows.Forms.RichTextBox rtbText;
         private System.Windows.Forms.ToolStripMenuItem colorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem styleToolStripMenuItem;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBold;
+        private System.Windows.Forms.Button btnItalics;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 
