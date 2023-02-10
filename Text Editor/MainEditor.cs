@@ -14,7 +14,7 @@ namespace Text_Editor
 {
     public partial class frmMainMenu : Form
     {
-        private string searchText = frmSearchMenu.SearchText;
+        //private TextBox textToSearch = frmSearchMenu.SearchText;
         public frmMainMenu()
         {
             InitializeComponent();
@@ -161,24 +161,50 @@ namespace Text_Editor
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void FindText(RichTextBox mainText, string textToSearch)
         {
-            string[] wordSearch = textBox1.Text.Split(',');
+            string[] wordSearch = textToSearch.Split(',');
             foreach (string word in wordSearch)
-            {   
-                //Test.
+            {
+                int startIndex = 0;
+                while (startIndex < mainText.TextLength)
+                {
+                    int wordStartIndex = mainText.Find(word, startIndex, RichTextBoxFinds.None);
+
+                    if (word == "")
+                    {
+                        mainText.SelectionStart = 0;
+                        mainText.SelectAll();
+                        mainText.SelectionBackColor = Color.White;
+                    }
+
+                    if (wordStartIndex != -1)
+                    {
+                        mainText.SelectionStart = wordStartIndex;
+                        mainText.SelectionLength = word.Length;
+                        mainText.SelectionBackColor = Color.LightBlue;
+                    }
+                    else
+                        break;
+
+                    startIndex = wordStartIndex + word.Length;
+
+                }
             }
-            FindText();
         }
-
-        private void FindText()
-        {
-            throw new NotImplementedException();
-        }
-
         private void btnBold_Click(object sender, EventArgs e)
         {
             //
+        }
+
+        private void frmMainMenu_VisibleChanged(object sender, EventArgs e)
+        {
+            FindText(rtbText, frmSearchMenu.textToSearch);
+        }
+
+        private void frmMainMenu_Activated(object sender, EventArgs e)
+        {
+            FindText(rtbText, frmSearchMenu.textToSearch);
         }
     }
 }

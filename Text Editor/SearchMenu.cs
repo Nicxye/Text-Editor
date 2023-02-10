@@ -12,7 +12,7 @@ namespace Text_Editor
 {
     public partial class frmSearchMenu : Form
     {
-        private static string searchText;
+        public static string textToSearch = "";
         public frmSearchMenu()
         {
             InitializeComponent();
@@ -25,12 +25,8 @@ namespace Text_Editor
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            searchText = txtSearch.Text;
-        }
-
-        public static string SearchText
-        {
-            get { return searchText; }
+            textToSearch = txtSearch.Text;
+            Close();
         }
     }
 }
