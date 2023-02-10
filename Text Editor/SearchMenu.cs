@@ -26,7 +26,7 @@ namespace Text_Editor
         private void btnSearch_Click(object sender, EventArgs e)
         {
             textToSearch = txtSearch.Text;
-            Close();
+            Hide(); //Has to be close.
         }
     }
 }
