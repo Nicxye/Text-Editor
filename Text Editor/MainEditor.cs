@@ -194,7 +194,10 @@ namespace Text_Editor
         }
         private void btnBold_Click(object sender, EventArgs e)
         {
-            //
+            if (!rtbText.SelectionFont.Bold)
+                rtbText.SelectionFont = new Font(rtbText.Font, FontStyle.Bold); 
+            else
+                rtbText.SelectionFont = new Font(rtbText.Font, FontStyle.Regular); 
         }
 
         private void frmMainMenu_VisibleChanged(object sender, EventArgs e)
@@ -205,6 +208,30 @@ namespace Text_Editor
         private void frmMainMenu_Activated(object sender, EventArgs e)
         {
             FindText(rtbText, frmSearchMenu.textToSearch);
+        }
+
+        private void btnItalics_Click(object sender, EventArgs e)
+        {
+            if (!rtbText.SelectionFont.Italic)
+                rtbText.SelectionFont = new Font(rtbText.Font, FontStyle.Italic);
+            else
+                rtbText.SelectionFont = new Font(rtbText.Font, FontStyle.Regular);
+        }
+
+        private void btnUnderline_Click(object sender, EventArgs e)
+        {
+            if (!rtbText.SelectionFont.Underline)
+                rtbText.SelectionFont = new Font(rtbText.Font, FontStyle.Underline);
+            else
+                rtbText.SelectionFont = new Font(rtbText.Font, FontStyle.Regular);
+        }
+
+        private void btnStrikeout_Click(object sender, EventArgs e)
+        {
+            if (!rtbText.SelectionFont.Strikeout)
+                rtbText.SelectionFont = new Font(rtbText.Font, FontStyle.Strikeout);
+            else
+                rtbText.SelectionFont = new Font(rtbText.Font, FontStyle.Regular);
         }
     }
 }

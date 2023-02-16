@@ -58,8 +58,8 @@
             this.rtbText = new System.Windows.Forms.RichTextBox();
             this.btnBold = new System.Windows.Forms.Button();
             this.btnItalics = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnUnderline = new System.Windows.Forms.Button();
+            this.btnStrikeout = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -329,38 +329,41 @@
             this.btnItalics.TabIndex = 5;
             this.btnItalics.Text = "&I";
             this.btnItalics.UseVisualStyleBackColor = true;
+            this.btnItalics.Click += new System.EventHandler(this.btnItalics_Click);
             // 
-            // button2
+            // btnUnderline
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(191, 1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(25, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "&U";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnUnderline.FlatAppearance.BorderSize = 0;
+            this.btnUnderline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUnderline.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUnderline.Location = new System.Drawing.Point(191, 1);
+            this.btnUnderline.Name = "btnUnderline";
+            this.btnUnderline.Size = new System.Drawing.Size(25, 23);
+            this.btnUnderline.TabIndex = 6;
+            this.btnUnderline.Text = "&U";
+            this.btnUnderline.UseVisualStyleBackColor = true;
+            this.btnUnderline.Click += new System.EventHandler(this.btnUnderline_Click);
             // 
-            // button3
+            // btnStrikeout
             // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(222, 1);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(23, 23);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "&K";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnStrikeout.FlatAppearance.BorderSize = 0;
+            this.btnStrikeout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStrikeout.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStrikeout.Location = new System.Drawing.Point(222, 1);
+            this.btnStrikeout.Name = "btnStrikeout";
+            this.btnStrikeout.Size = new System.Drawing.Size(23, 23);
+            this.btnStrikeout.TabIndex = 7;
+            this.btnStrikeout.Text = "&K";
+            this.btnStrikeout.UseVisualStyleBackColor = true;
+            this.btnStrikeout.Click += new System.EventHandler(this.btnStrikeout_Click);
             // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1539, 816);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnStrikeout);
+            this.Controls.Add(this.btnUnderline);
             this.Controls.Add(this.btnItalics);
             this.Controls.Add(this.btnBold);
             this.Controls.Add(this.rtbText);
@@ -409,8 +412,8 @@
         private System.Windows.Forms.ToolStripMenuItem styleToolStripMenuItem;
         private System.Windows.Forms.Button btnBold;
         private System.Windows.Forms.Button btnItalics;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnUnderline;
+        private System.Windows.Forms.Button btnStrikeout;
     }
 }
 
